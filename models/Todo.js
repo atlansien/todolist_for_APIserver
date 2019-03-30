@@ -20,6 +20,9 @@ for (let i = 0;i < 5; i++) {
     todos.push(todo);
 }
 
-console.log(todos)
 
-module.exports = {};
+module.exports = {
+    findAll : () => {
+        return todos;
+    }
+};
