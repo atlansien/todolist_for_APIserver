@@ -1,0 +1,19 @@
+{
+  "name": "todolist_for_apiserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10",
+    "power-assert": "^1.6.1"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
