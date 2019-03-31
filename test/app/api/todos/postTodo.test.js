@@ -43,4 +43,29 @@ describe("test 「POST /api/todos」", () => {
       message: "bodyは必須です"
     });
   });
+
+  it("title,bodyを送ったら成功する", async () => {
+    const oldTodos = await getTodos();
+    const postData = { title: "test title", body: "test body" };
+
+    const response = await requestHelper
+      .request({
+        method: "post",
+        endPoint: "/api/todos",
+        statusCode: 200
+      })
+      .send(postData);
+
+    const todos = response.body;
+    assert.deepEqual(todos, {
+      id: todos.id,
+      title: todos.title,
+      body: todos.body,
+      createdAt: todos.createdAt,
+      updatedAt: todos.updatedAt
+    });
+
+    const currentTodos = await getTodos();
+    assert.equal(oldTodos.length + 1, currentTodos.length);
+  });
 });
