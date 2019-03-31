@@ -27,4 +27,20 @@ describe("test 「POST /api/todos」", () => {
       message: "titleは必須です"
     });
   });
+
+  it("bodyを送らなかった場合400エラーが返る", async () => {
+    const postData = { title: "test title" };
+
+    const response = await requestHelper
+      .request({
+        method: "post",
+        endPoint: "/api/todos",
+        statusCode: 400
+      })
+      .send(postData);
+
+    assert.deepEqual(response.body, {
+      message: "bodyは必須です"
+    });
+  });
 });
