@@ -30,7 +30,7 @@ module.exports = {
       throw new Error("titleは必須です");
     }
     if (!body) {
-      throw new ErrorEvent("bodyは必須です");
+      throw new Error("bodyは必須です");
     }
 
     const todo = new Todo({
