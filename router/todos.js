@@ -5,6 +5,6 @@ const controller = require("../controllers/todos");
 router
   .route("/")
   .get(controller.getTodos)
-  .post(controller.postTodos);
+  .post(controller.postTodo);
 
 module.exports = router;
