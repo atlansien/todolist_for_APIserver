@@ -5,5 +5,7 @@ module.exports = {
     const storedTodos = Todo.findAll();
 
     res.status(200).json(storedTodos);
-  }
+  },
+
+  postTodos: (req, res) => {}
 };
