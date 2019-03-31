@@ -26,4 +26,24 @@ describe("Todo.create", () => {
       assert.equal(error.message, "bodyは必須です");
     }
   });
+
+  it("メソッド実行時、正しい引数を渡すと新規にTodoデータを作成して、作成されたTodoを返す", () => {
+    const oldTodos = Todo.findAll();
+    const data = {
+      title: "test title",
+      body: "test body"
+    };
+
+    const createdTodo = Todo.create(data);
+    assert.deepEqual(createdTodo, {
+      id: createdTodo.id,
+      title: createdTodo.title,
+      body: createdTodo.body,
+      createdAt: createdTodo.createdAt,
+      updatedAt: createdTodo.updatedAt
+    });
+
+    const currentTodos = Todo.findAll();
+    assert.equal(currentTodos.length, oldTodos.length + 1);
+  });
 });
