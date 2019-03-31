@@ -5,4 +5,16 @@ describe("Todo.create", () => {
   it("Todo.createはメソッドである", () => {
     assert.equal(typeof Todo.create, "function");
   });
+
+  it("メソッド実行時、引数にtitleを含むプロパティ値がないとエラーになる", () => {
+    const dataList = [{}, { body: "test body" }];
+    dataList.forEach(data => {
+      try {
+        Todo.create(data);
+        assert.fail();
+      } catch (error) {
+        assert.equal(error.message, "titleは必須です");
+      }
+    });
+  });
 });
