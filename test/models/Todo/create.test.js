@@ -17,4 +17,13 @@ describe("Todo.create", () => {
       }
     });
   });
+
+  it("メソッド実行時、引数にbodyを含むプロパティ値がないとエラーになる", () => {
+    try {
+      Todo.create({ title: "test title" });
+      assert.fail();
+    } catch (error) {
+      assert.equal(error.message, "bodyは必須です");
+    }
+  });
 });
