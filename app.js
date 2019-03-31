@@ -1,7 +1,11 @@
-const express = require('express');
-const todosRouter = require('./router/todos');
+const express = require("express");
+const bodyParser = require("body-parser");
+const todosRouter = require("./router/todos");
 const app = express();
 
-app.use('/api/todos', todosRouter);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/api/todos", todosRouter);
 
 module.exports = app;
