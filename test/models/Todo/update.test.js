@@ -7,7 +7,14 @@ describe("Todo.create", () => {
   });
 
   it("メソッド実行時、idの引数にに適切で無いプロパティ値(数字以外や1以下の数字)がある場合はエラーになる", () => {
-    const invalidIds = [[], {}, 0, -1];
+    const invalidIds = [
+      { id: 0 },
+      { id: -1 },
+      { id: null },
+      { id: {} },
+      { id: [] },
+      { id: "1" }
+    ];
 
     invalidIds.forEach(id => {
       try {
