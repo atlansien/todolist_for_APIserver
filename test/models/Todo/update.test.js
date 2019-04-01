@@ -53,5 +53,25 @@ describe("Todo.create", () => {
     }
   });
 
-  it("");
+  it("メソッド実行時、適切なデータを渡すとidと合致したtodoのtitle、body、updateAtを更新して、更新されたデータを返す", () => {
+    const VALID_ID = 1;
+    const dateList = {
+      id: VALID_ID,
+      title: "test title",
+      body: "test body"
+    };
+
+    const updatedTodo = Todo.update(dateList);
+    assert.deepEqual(updatedTodo, {
+      id: updatedTodo.id,
+      title: updatedTodo.title,
+      body: updatedTodo.body,
+      createdAt: updatedTodo.createdAt,
+      updatedAt: updatedTodo.updatedAt
+    });
+
+    const currentTodo = Todo.findAll();
+    assert.deepEqual(currentTodo[0], updatedTodo);
+    assert.equal(updatedTodo.updatedAt > updatedTodo.createdAt, true);
+  });
 });
