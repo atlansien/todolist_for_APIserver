@@ -40,4 +40,18 @@ describe("Todo.create", () => {
       assert.equal(error.message, "bodyは必須です");
     }
   });
+
+  it("メソッド実行時、idのプロパティ値と合致したtodoが無いとエラーになる", () => {
+    const INVALID_ID = 999999999;
+    const dateList = { id: INVALID_ID, title: "test title", body: "test body" };
+
+    try {
+      Todo.update(dateList);
+      assert.fail();
+    } catch (error) {
+      assert.equal(error.message, "idに該当するtodoが存在しません");
+    }
+  });
+
+  it("");
 });
