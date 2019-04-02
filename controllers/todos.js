@@ -16,5 +16,11 @@ module.exports = {
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
+  },
+
+  putTodo: (req, res) => {
+    try {
+      const { id, title, body } = req.body;
+    } catch (error) {}
   }
 };
