@@ -1,7 +1,5 @@
-const request = require("supertest");
 const assert = require("power-assert");
 const requestHelper = require("../../../../helper/requestHelper");
-const app = require("../../../../app");
 
 describe("test 「GET/api/todos」", () => {
   it("totosリストがjson形式としてresponse.bodyで返ってきている", async () => {
