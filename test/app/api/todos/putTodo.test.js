@@ -31,4 +31,20 @@ describe("TEST 「PUT/api/todo/:id」", () => {
       message: `idに該当するtodoが存在しません`
     });
   });
+
+  it("titleを送らなかった場合エラーが返る", async () => {
+    const data = { body: "test body" };
+
+    const response = await requestHelper
+      .request({
+        method: "put",
+        endPoint: `/api/todos/${VALID_ID}`,
+        statusCode: 400
+      })
+      .send(data);
+
+    assert.deepEqual(response.body, {
+      message: `titleは必須です`
+    });
+  });
 });
