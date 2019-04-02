@@ -20,7 +20,14 @@ module.exports = {
 
   putTodo: (req, res) => {
     try {
-      const { id, title, body } = req.body;
-    } catch (error) {}
+      const id = req.params.id;
+      const parseId = parseInt(id, 10);
+      const { title, body } = req.body;
+      const updatedTodo = Todo.update({ parseId, title, body });
+
+      res.status(200).json(updatedTodo);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
   }
 };
