@@ -65,8 +65,8 @@ module.exports = {
 
     return todo;
   },
-  remove: ({ id }) => {
-    if (typeof id === "number" || id < 1) {
+  remove: id => {
+    if (typeof id !== "number" || id < 1) {
       throw new Error("idは必須です(1以上の数値)");
     }
 
