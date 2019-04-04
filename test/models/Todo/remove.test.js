@@ -27,4 +27,21 @@ describe("Todo.remove", () => {
       assert.equal(error.message, "idに該当するtodoが存在しません");
     }
   });
+
+  it("メソッド実行時、正しいidを渡すと指定したidのTodoが削除され、返される", () => {
+    const oldTodos = Todo.findAll();
+    const VALID_ID = 3;
+
+    const removedTodo = Todo.remove(VALID_ID);
+    assert.deepEqual(removedTodo, {
+      id: VALID_ID,
+      title: removedTodo.title,
+      body: removedTodo.body,
+      createdAt: removedTodo.createdAt,
+      updatedAt: removedTodo.updatedAt
+    });
+
+    const currentTodos = Todo.findAll();
+    assert.equal(oldTodos.length, currentTodos.length + 1);
+  });
 });
