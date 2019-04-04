@@ -17,4 +17,14 @@ describe("Todo.remove", () => {
       }
     });
   });
+
+  it("idの引数と合致したTodoがなかった場合はエラーが出る", () => {
+    const INVALID_ID = 999999999;
+    try {
+      Todo.remove(INVALID_ID);
+      assert.fail();
+    } catch (error) {
+      assert.equal(error.message, "idに該当するtodoが存在しません");
+    }
+  });
 });
