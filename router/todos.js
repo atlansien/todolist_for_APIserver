@@ -7,5 +7,8 @@ router
   .get(controller.getTodos)
   .post(controller.postTodo);
 
-router.route("/:id").put(controller.putTodo);
+router
+  .route("/:id")
+  .put(controller.putTodo)
+  .put(controller.deleteTodo);
 module.exports = router;
