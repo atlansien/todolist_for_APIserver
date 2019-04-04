@@ -10,5 +10,5 @@ router
 router
   .route("/:id")
   .put(controller.putTodo)
-  .put(controller.deleteTodo);
+  .delete(controller.deleteTodo);
 module.exports = router;
